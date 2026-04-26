@@ -1295,7 +1295,7 @@ img {
 
     /* Hero Padding: Reduced further for very small screens */
     .hero {
-        padding: 40px 16px 40px;
+        padding: 60px 16px 40px;
     }
 
     .hero-stats {

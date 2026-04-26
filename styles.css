@@ -1014,6 +1014,12 @@ img {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Embed wrapper margins — Desktop */
+.contact-page .tally-form-wrapper,
+.booking-page .calendly-wrapper {
+    margin-top: 40px;
+}
+
 /* Light contact option defaults (fallback) */
 .contact-option {
     padding: 36px 32px;
@@ -1239,6 +1245,12 @@ img {
         height: 650px;
     }
 
+     /* Embed wrapper margins — Mobile */
+    .contact-page .tally-form-wrapper,
+    .booking-page .calendly-wrapper {
+        margin-top: 20px;
+    }
+
     .tally-form-wrapper {
         padding: 28px;
     }
@@ -1361,6 +1373,11 @@ img {
     .content .subtitle {
         font-size: 0.98rem;
         margin-bottom: 28px;
+    }
+
+    .contact-page .tally-form-wrapper,
+    .booking-page .calendly-wrapper {
+        margin-top: 20px;
     }
 
     .tally-form-wrapper {

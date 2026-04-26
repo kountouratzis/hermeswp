@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Call | Book Hermes WP — Free Consultation</title>
+    <meta name="description" content="Book Hermes WP for a free consultation. Schedule a call to discuss your WordPress website needs — custom design, development, and ongoing support.">
+    <meta name="keywords" content="Book Hermes WP, schedule a call, free consultation, WordPress development, Hermes WP booking, WordPress expert">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hermeswp.com/booking/">
+    <meta property="og:title" content="Schedule a Call | Book Hermes WP">
+    <meta property="og:description" content="Book Hermes WP for a free consultation. Schedule a convenient time to discuss your WordPress project.">
+    <meta property="og:url" content="https://hermeswp.com/booking/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Schedule a Call | Book Hermes WP">
+    <meta name="twitter:description" content="Book Hermes WP for a free consultation. Schedule a convenient time to discuss your WordPress project.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="booking-page">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" id="header" role="banner">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Hermes WP — Home">
+                <img src="hermeswp-logo.png" alt="Hermes WP Logo" width="36" height="36">
+                <span class="logo-text">HERMES WP</span>
+            </a>
+            <nav class="nav" aria-label="Main navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="index.html#how-i-work">Process</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                </ul>
+                <!-- Contact Me Button removed via CSS for this page -->
+                <a href="contact.html" class="nav-cta">Contact Me</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#work">Work</a>
+            <a href="index.html#how-i-work">Process</a>
+            <a href="index.html#testimonials">Testimonials</a>
+            <a href="contact.html" class="nav-cta">Contact Me</a>
+        </div>
+    </header>
+
+    <main id="main" role="main">
+        <div class="container">
+            <div class="content">
+                <h1>Schedule a Call</h1>
+                <p class="subtitle">Prefer a direct conversation?<br>Book a convenient time on my Calendly page for a free consultation.</p>
+
+                <div class="calendly-wrapper">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/iraklisk/30min?hide_event_type_details=1"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Calendly inline widget end -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container-lg footer-inner">
+            <p class="footer-text">&copy; 2026 Hermes WP — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Lucide Icons & Mobile Menu -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+                mobileToggle.setAttribute('aria-expanded', String(isOpen));
+                document.body.classList.toggle('menu-open', isOpen);
+            });
+
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                    mobileToggle.focus();
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

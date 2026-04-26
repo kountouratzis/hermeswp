@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Hermes WP — Get in touch for WordPress development, theme customization, and web project inquiries. Fill out the form and receive a prompt response.">
+    <meta name="keywords" content="Contact Hermes WP, WordPress developer contact, WordPress development inquiry, hire WordPress developer, web development contact form">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Hermes WP">
+    <link rel="canonical" href="https://hermeswp.com/contact">
+    <title>Contact Hermes WP — Get In Touch</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="contact-page">
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" id="header" role="banner">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="Hermes WP — Home">
+                <img src="hermeswp-logo.png" alt="Hermes WP Logo" width="36" height="36">
+                <span class="logo-text">HERMES WP</span>
+            </a>
+            <nav class="nav" aria-label="Main navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="index.html#how-i-work">Process</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                </ul>
+                <!-- Contact Me Button removed via CSS for this page -->
+                <a href="contact.html" class="nav-cta">Contact Me</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#work">Work</a>
+            <a href="index.html#how-i-work">Process</a>
+            <a href="index.html#testimonials">Testimonials</a>
+            <a href="contact.html" class="nav-cta">Contact Me</a>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="container">
+            <div class="content">
+                <h1>Contact Hermes WP</h1>
+                <p class="subtitle">Have a question or a detailed project brief?<br> Fill out my contact form, and I'll get back to you promptly.</p>
+
+                <div class="tally-form-wrapper">
+                    <iframe
+                        data-tally-src="https://tally.so/embed/dWZDko?alignLeft=1&hideTitle=1&dynamicHeight=1"
+                        loading="lazy"
+                        width="100%"
+                        height="276"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
+                        title="Contact Hermes WP"
+                        aria-label="Contact form — fill out this form to get in touch with Hermes WP">
+                    </iframe>
+                    <noscript>
+                        <p>Please enable JavaScript to use the contact form, or email us directly.</p>
+                    </noscript>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container-lg footer-inner">
+            <p class="footer-text">&copy; 2026 Hermes WP — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Lucide Icons & Mobile Menu -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+                mobileToggle.setAttribute('aria-expanded', String(isOpen));
+                document.body.classList.toggle('menu-open', isOpen);
+            });
+
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                    mobileToggle.focus();
+                }
+            });
+        }
+    </script>
+
+    <!-- Tally Form Script -->
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+</body>
+</html>

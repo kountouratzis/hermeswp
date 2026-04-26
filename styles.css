@@ -1,7 +1,18 @@
-* {
+/* =============================================
+   HERMESWP — Main Stylesheet
+   ============================================= */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -10,112 +21,1246 @@ html, body {
 }
 
 body {
-    background: linear-gradient(135deg, #2CB1BC 0%, #13919B 50%, #587089 100%);
-    font-family: 'Roboto', sans-serif;
+    background: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Skip Link (Accessibility) --- */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #13919B;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.container {
-    width: 100%;
-    max-width: 800px;
-    animation: fadeIn 0.8s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.content {
-    text-align: center;
-}
-
-h1 {
-    font-family: 'Questrial', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 30px;
-    line-height: 1.3;
-    letter-spacing: 0.5px;
-}
-
-h2 {
-    font-family: 'Questrial', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 25px;
-    line-height: 1.4;
-    letter-spacing: 0.3px;
-}
-
-p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 20px;
-    line-height: 1.8;
-    opacity: 0.95;
-}
-
-.contact-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 40px;
-    background-color: #ffffff;
-    color: #2CB1BC;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: 0 0 8px 8px;
     font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    letter-spacing: 0.5px;
-}
-
-.contact-button:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.contact-button:active {
-    transform: translateY(0);
+    font-size: 0.875rem;
+    text-decoration: none;
+    z-index: 10000;
+    transition: top 0.2s ease;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Tablet responsiveness */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 25px;
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #2cb1bc;
+    outline-offset: 2px;
+}
+
+/* --- Layout --- */
+.container-lg {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* =============================================
+   GRADIENT OVERLAY — shared by hero, work,
+   testimonials, footer
+   ============================================= */
+.hero,
+.section-gradient,
+.footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.section-gradient::before,
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.52) 0%,
+        rgba(0, 0, 0, 0.22) 30%,
+        rgba(0, 0, 0, 0.12) 60%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero .hero-inner,
+.section-gradient .container-lg,
+.footer .footer-inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+    /* Add this line to prevent header from expanding */
+    height: auto;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    transition: padding 0.35s ease;
+}
+
+/* Non-scrolled: transparent over hero gradient — all elements white */
+.header:not(.scrolled) {
+    background: transparent;
+}
+
+/* Scrolled: dark background matching services section */
+.header.scrolled {
+    background: #095c64;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header.scrolled .header-inner {
+    padding: 12px 24px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 36px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    border-radius: 4px;
+}
+
+.logo-text {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+/* Desktop Navigation — always white since both states have dark bg */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 4px;
+}
+
+.nav-links a {
+    display: block;
+    padding: 8px 14px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a:focus-visible {
+    outline: 2px solid #7ee8f0;
+    outline-offset: 2px;
+}
+
+/* CTA button in nav */
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 22px;
+    margin-left: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50px;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.nav-cta:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+.nav-cta:focus-visible {
+    outline: 2px solid #7ee8f0;
+    outline-offset: 3px;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu Panel */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: 8px 24px 24px;
+    background: #095c64;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.2s ease;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu a:hover {
+    color: #ffffff;
+}
+
+.mobile-menu .nav-cta {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 12px 28px;
+    font-size: 0.9375rem;
+    border-bottom: none;
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 120px 24px 80px;
+    background: linear-gradient(135deg, #2CB1BC 0%, #13919B 50%, #587089 100%);
+}
+
+.hero-inner {
+    max-width: 720px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Badge */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Hero Title */
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 36px;
+    color: #ffffff;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 56px;
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+.stat-label {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.5);
+    animation: bounce-down 2s ease-in-out infinite;
+}
+
+.hero-scroll-hint svg {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes bounce-down {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    letter-spacing: 0.01em;
+}
+
+.btn:focus-visible {
+    outline: 2px solid #7ee8f0;
+    outline-offset: 3px;
+}
+
+/* Primary — teal (for light backgrounds) */
+.btn-primary {
+    background: #13919B;
+    color: #ffffff;
+    border-color: #13919B;
+    box-shadow: 0 4px 14px rgba(19, 145, 155, 0.3);
+}
+
+.btn-primary:hover {
+    background: #117880;
+    border-color: #117880;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(19, 145, 155, 0.35);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(19, 145, 155, 0.25);
+}
+
+/* Primary Dark — light/white button for dark backgrounds */
+.btn-primary-dark {
+    background: #ffffff;
+    color: #095c64;
+    border-color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary-dark:hover {
+    background: #e8f4f5;
+    border-color: #e8f4f5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary-dark:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Outline Light — for hero */
+.btn-outline-light {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+}
+
+.btn-outline-light:active {
+    transform: translateY(0);
+}
+
+/* =============================================
+   SECTIONS — Common
+   ============================================= */
+.section {
+    padding: 100px 0;
+}
+
+/* Hero-matching gradient sections (work, testimonials) */
+.section-gradient {
+    background: linear-gradient(135deg, #2CB1BC 0%, #13919B 50%, #587089 100%);
+    color: #ffffff;
+}
+
+/* Darker gradient sections (services, how-i-work, contact) */
+.section-dark {
+    background: linear-gradient(135deg, #15707a 0%, #095c64 50%, #334b5e 100%);
+    color: #ffffff;
+}
+
+/* Light section (kept for potential use) */
+.section-white {
+    background: #ffffff;
+}
+
+.section-gray {
+    background: #f8f9fb;
+}
+
+.section-header {
+    max-width: 680px;
+    margin: 0 auto 64px;
+    text-align: center;
+}
+
+/* Section label — light sections */
+.section-white .section-label,
+.section-gray .section-label {
+    color: #13919B;
+}
+
+/* Section label — gradient sections */
+.section-gradient .section-label {
+    color: #7ee8f0;
+}
+
+/* Section label — dark sections */
+.section-dark .section-label {
+    color: #7ee8f0;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+/* Section title — light sections */
+.section-white .section-title,
+.section-gray .section-title {
+    color: #1a1a1a;
+}
+
+/* Section title — gradient & dark sections */
+.section-gradient .section-title,
+.section-dark .section-title {
+    color: #ffffff;
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+}
+
+/* Section intro — light sections */
+.section-white .section-intro,
+.section-gray .section-intro {
+    color: #555555;
+}
+
+/* Section intro — gradient sections */
+.section-gradient .section-intro {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Section intro — dark sections */
+.section-dark .section-intro {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-intro {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* =============================================
+   SERVICES SECTION (Dark)
+   ============================================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Dark section card defaults */
+.section-dark .service-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-dark .service-card:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.section-dark .service-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: #7ee8f0;
+}
+
+.section-dark .service-title {
+    color: #ffffff;
+}
+
+.section-dark .service-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Light section card defaults (fallback) */
+.service-card {
+    padding: 32px 28px;
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.section-white .service-card:hover,
+.section-gray .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+    border-color: #2cb1bc;
+}
+
+.section-dark .service-card:hover {
+    transform: translateY(-4px);
+}
+
+.service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.section-white .service-icon,
+.section-gray .service-icon {
+    background: rgba(44, 177, 188, 0.08);
+    color: #13919B;
+}
+
+.service-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.service-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+
+.section-white .service-title,
+.section-gray .service-title {
+    color: #1a1a1a;
+}
+
+.service-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.section-white .service-text,
+.section-gray .service-text {
+    color: #666666;
+}
+
+/* =============================================
+   SELECTED WORK SECTION (Gradient)
+   ============================================= */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.work-card {
+    /* CHANGE: Added gradient using white & #2cb1bc. */
+    /* To maintain accessibility with the existing dark text, we lighten the teal significantly (tint). */
+    background: linear-gradient(180deg, #ffffff 0%, #e6fbfd 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(44, 177, 188, 0.2);
+}
+
+.work-image {
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-image img {
+    transform: scale(1.03);
+}
+
+.work-info {
+    padding: 28px 28px 32px;
+}
+
+.work-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    /* CHANGE: Adjusted text color to work on both white and light teal background */
+    color: #08484e; 
+    margin-bottom: 12px;
+}
+
+.work-title a {
+    color: #08484e;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.work-title a:hover {
+    color: #0a5c63;
+}
+
+.work-title a:focus-visible {
+    outline: 2px solid #13919B;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.work-desc {
+    font-size: 0.9rem;
+    /* CHANGE: Adjusted text color for better contrast on gradient */
+    color: #0d5a61;
+    line-height: 1.75;
+}
+
+/* =============================================
+   HOW I WORK SECTION (Dark)
+   ============================================= */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+/* Dark section step card defaults */
+.section-dark .step-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-dark .step-card:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.section-dark .step-number {
+    color: #7ee8f0;
+}
+
+.section-dark .step-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: #7ee8f0;
+}
+
+.section-dark .step-title {
+    color: #ffffff;
+}
+
+.section-dark .step-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Light step card defaults (fallback) */
+.step-card {
+    position: relative;
+    padding: 32px 24px 28px;
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.section-white .step-card:hover,
+.section-gray .step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+    border-color: #2cb1bc;
+}
+
+.section-dark .step-card:hover {
+    transform: translateY(-4px);
+}
+
+.step-number {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+}
+
+.section-white .step-number,
+.section-gray .step-number {
+    color: #2cb1bc;
+}
+
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.section-white .step-icon,
+.section-gray .step-icon {
+    background: rgba(44, 177, 188, 0.08);
+    color: #13919B;
+}
+
+.step-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+
+.section-white .step-title,
+.section-gray .step-title {
+    color: #1a1a1a;
+}
+
+.step-text {
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.section-white .step-text,
+.section-gray .step-text {
+    color: #666666;
+}
+
+/* =============================================
+   TESTIMONIALS SECTION (Gradient)
+   ============================================= */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    padding: 32px 28px;
+    /* CHANGE: Added gradient using white & #2cb1bc. */
+    background: linear-gradient(180deg, #ffffff 0%, #e6fbfd 100%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-style: normal;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(44, 177, 188, 0.2);
+}
+
+.testimonial-quote {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #13919B;
+    margin-bottom: 8px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.testimonial-text {
+    font-size: 0.9375rem;
+    /* CHANGE: Adjusted text color for better contrast on gradient */
+    color: #0d5a61;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    /* CHANGE: Adjusted text color for better contrast on gradient */
+    color: #08484e;
+}
+
+/* =============================================
+   CONTACT SECTION (Dark)
+   ============================================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Dark section contact option defaults */
+.section-dark .contact-option {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-dark .contact-option:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.section-dark .contact-option-icon {
+    background: rgba(255, 255, 255, 0.1);
+    color: #7ee8f0;
+}
+
+.section-dark .contact-option-title {
+    color: #ffffff;
+}
+
+.section-dark .contact-option-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Light contact option defaults (fallback) */
+.contact-option {
+    padding: 36px 32px;
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.section-white .contact-option:hover,
+.section-gray .contact-option:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07);
+    border-color: #2cb1bc;
+}
+
+.section-dark .contact-option:hover {
+    transform: translateY(-4px);
+}
+
+.contact-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    margin: 0 auto 20px;
+}
+
+.section-white .contact-option-icon,
+.section-gray .contact-option-icon {
+    background: rgba(44, 177, 188, 0.08);
+    color: #13919B;
+}
+
+.contact-option-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-option-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.section-white .contact-option-title,
+.section-gray .contact-option-title {
+    color: #1a1a1a;
+}
+
+.contact-option-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.section-white .contact-option-text,
+.section-gray .contact-option-text {
+    color: #666666;
+}
+
+.contact-option .btn {
+    width: 100%;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    background: linear-gradient(135deg, #2CB1BC 0%, #13919B 50%, #587089 100%);
+    padding: 28px 0;
+}
+
+.footer-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+}
+
+/* =============================================
+   SCROLL REVEAL ANIMATION
+   ============================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================================
+   RESPONSIVE — Tablet (max-width: 1024px)
+   ============================================= */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    h2 {
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =============================================
+   RESPONSIVE — Mobile Nav (max-width: 860px)
+   ============================================= */
+@media (max-width: 860px) {
+    .nav {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+/* =============================================
+   RESPONSIVE — Tablet Small / Mobile (max-width: 768px)
+   ============================================= */
+@media (max-width: 768px) {
+    
+    /* --- Homepage Layout Adjustments --- */
+    .section {
+        padding: 72px 0;
+    }
+
+    .section-header {
+        margin-bottom: 48px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .hero-stats {
+        gap: 20px;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* Hero Padding: Reduced to 60px top (meets "at least 20px" req) */
+    .hero {
+        padding: 60px 16px 60px;
+        min-height: auto; /* Allow hero to shrink on mobile */
+    }
+
+    .hero-badge {
+        margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+        margin-bottom: 40px;
+    }
+
+    /* --- CONTACT PAGE FIXES --- */
+    body.contact-page {
+        min-height: auto; /* FIX: Remove forced full screen height */
+    }
+
+    .contact-page .container {
+        /* FIX: Top padding set to 20px as requested */
+        padding: 20px 16px 40px; 
+    }
+
+    /* --- BOOKING PAGE FIXES --- */
+    body.booking-page {
+        min-height: auto; /* FIX: Remove forced full screen height */
+    }
+
+    .booking-page .container {
+        /* FIX: Top padding set to 20px as requested */
+        padding: 20px 16px 40px;
+    }
+
+    .booking-page .calendly-inline-widget {
+        min-height: 500px; /* Ensure calendar fits on mobile */
+    }
+
+    /* --- Simple Page (Calendly/Tally) Fixes --- */
+    .calendly-inline-widget {
+        height: 650px;
+    }
+
+    .tally-form-wrapper {
+        padding: 28px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+        margin-bottom: 14px;
+    }
+
+    .content h2 {
         font-size: 1.5rem;
         margin-bottom: 20px;
     }
 
-    p {
+    .content p {
         font-size: 1rem;
         margin-bottom: 18px;
+    }
+
+    .content .subtitle {
+        font-size: 1.05rem;
+        margin-bottom: 30px;
     }
 
     .contact-button {
@@ -124,25 +1269,106 @@ p {
     }
 }
 
-/* Mobile responsiveness */
+/* =============================================
+   RESPONSIVE — Mobile Small (max-width: 480px)
+   ============================================= */
 @media (max-width: 480px) {
-    body {
-        padding: 15px;
+    .container-lg {
+        padding: 0 16px;
     }
 
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
+    .section {
+        padding: 56px 0;
     }
 
-    h2 {
-        font-size: 1.2rem;
+    /* Hero Padding: Reduced further for very small screens */
+    .hero {
+        padding: 40px 16px 40px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .stat-divider {
+        width: 36px;
+        height: 1px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .service-card {
+        padding: 24px 20px;
+    }
+
+    .work-info {
+        padding: 20px 20px 24px;
+    }
+
+    .step-card {
+        padding: 24px 20px 20px;
+    }
+
+    .testimonial-card {
+        padding: 24px 20px;
+    }
+
+    .contact-option {
+        padding: 28px 20px;
+    }
+
+    .btn {
+        padding: 13px 28px;
+        font-size: 0.9rem;
+    }
+
+    .header-inner {
+        padding: 14px 16px;
+    }
+
+    .mobile-menu {
+        padding: 8px 16px 20px;
+    }
+
+    .logo-text {
+        font-size: 0.9375rem;
+    }
+
+    .content h1 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .content h2 {
+        font-size: 1.25rem;
         margin-bottom: 18px;
     }
 
-    p {
+    .content p {
         font-size: 0.95rem;
         margin-bottom: 16px;
+    }
+
+    .content .subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 28px;
+    }
+
+    .tally-form-wrapper {
+        padding: 18px;
+    }
+
+    .calendly-inline-widget {
+        height: 600px;
     }
 
     .contact-button {
@@ -152,25 +1378,159 @@ p {
     }
 }
 
-/* Extra small devices */
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.3rem;
-        margin-bottom: 18px;
-    }
+/* =============================================
+   CONTACT PAGE OVERRIDES
+   ============================================= */
 
-    h2 {
-        font-size: 1.1rem;
-        margin-bottom: 16px;
-    }
-
-    p {
-        font-size: 0.9rem;
-        margin-bottom: 14px;
-    }
-
-    .contact-button {
-        padding: 10px 25px;
-        font-size: 0.85rem;
-    }
+/* Desktop: Force full height layout (Sticky Footer) */
+body.contact-page {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 0;
 }
+
+body.contact-page main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.contact-page .header {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9fa 100%);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.contact-page .header.scrolled {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9fa 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.contact-page .logo-text { color: #13919B; }
+.contact-page .logo img { filter: none; }
+.contact-page .nav-links a { color: #13919B; }
+.contact-page .nav-links a:hover,
+.contact-page .nav-links a:focus-visible {
+    color: #0a5c63;
+    background: rgba(19, 145, 155, 0.1);
+}
+.contact-page .nav-cta { display: none; }
+.contact-page .hamburger-line { background: #13919B; }
+.contact-page .mobile-menu {
+    background: #ffffff;
+    border-top: 1px solid #e8eaed;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+.contact-page .mobile-menu a { color: #1a1a1a; border-bottom-color: #f0f0f0; }
+.contact-page .mobile-menu a:hover { color: #13919B; }
+
+/* Container */
+.contact-page .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px 20px 80px; /* Desktop padding */
+    width: 100%;
+}
+
+.contact-page .tally-form-wrapper {
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+/* Footer */
+.contact-page .footer {
+    background: linear-gradient(180deg, #ffffff 0%, #e6fbfd 100%);
+    border-top: 1px solid #e8eaed;
+}
+.contact-page .footer-text { color: #08484e; }
+
+
+/* =============================================
+   BOOKING PAGE OVERRIDES
+   ============================================= */
+
+/* Desktop: Force full height layout (Sticky Footer) */
+body.booking-page {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 0;
+}
+
+body.booking-page main {
+    flex: 1;
+    display: block;
+}
+
+/* Header */
+.booking-page .header {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9fa 100%);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.booking-page .header.scrolled {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9fa 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.booking-page .logo-text { color: #13919B; }
+.booking-page .logo img { filter: none; }
+.booking-page .nav-links a { color: #13919B; }
+.booking-page .nav-links a:hover,
+.booking-page .nav-links a:focus-visible {
+    color: #0a5c63;
+    background: rgba(19, 145, 155, 0.1);
+}
+.booking-page .nav-cta { display: none; }
+.booking-page .hamburger-line { background: #13919B; }
+.booking-page .mobile-menu {
+    background: #ffffff;
+    border-top: 1px solid #e8eaed;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+.booking-page .mobile-menu a { color: #1a1a1a; border-bottom-color: #f0f0f0; }
+.booking-page .mobile-menu a:hover { color: #13919B; }
+
+/* Container */
+.booking-page .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 100px 20px 80px; /* Desktop padding */
+    width: 100%;
+}
+
+.booking-page .content h1 { color: #13919B; }
+.booking-page .content p,
+.booking-page .content .subtitle { color: #1a1a1a; }
+
+.booking-page .calendly-wrapper {
+    background: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    overflow: hidden;
+}
+
+.booking-page .calendly-inline-widget {
+    min-height: 620px;
+    width: 100%;
+}
+
+/* Footer */
+.booking-page .footer {
+    background: linear-gradient(180deg, #ffffff 0%, #e6fbfd 100%);
+    border-top: 1px solid #e8eaed;
+}
+.booking-page .footer-text { color: #08484e; }

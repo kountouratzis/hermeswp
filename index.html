@@ -3,23 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermes WP - Building the Next Era</title>
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Websites and services for small businesses. Custom web development, WordPress, WooCommerce, SEO, and digital strategy by Hermeswp.">
+    <meta name="keywords" content="Websites and services for small businesses, web developer, WordPress, WooCommerce, SEO, small business website, digital strategy">
+    <meta name="author" content="Herc — Hermeswp">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Hermeswp — Websites and Services for Small Businesses">
+    <meta property="og:description" content="Websites and services for small businesses. Custom web development, WordPress, WooCommerce, SEO, and digital strategy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hermeswp.com">
+    <title>Hermeswp — Websites and Services for Small Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <main class="content">
-            <h1>I'm in the Lab – Building the Next Era of Hermes WP</h1>
-            
-            <h2>I'm thrilled to announce that Hermes WP is undergoing a major transformation!</h2>
-            
-            <p>Our team is hard at work behind the scenes, enhancing performance and creating a sleeker user experience. This rebuild will deliver more value to businesses like yours.</p>
-            
-            <p>The site might be quiet while we tinker and test, but we'll be back soon. For questions or support, contact us. We appreciate your patience!</p>
-            
-            <a href="mailto:info@hermeswp.com" class="contact-button" target="_blank">Contact Us</a>
-        </main>
-    </div>
+
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" id="header" role="banner">
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="Hermes WP — Home">
+                <img src="hermeswp-logo.png" alt="Hermes WP Logo" width="36" height="36">
+                <span class="logo-text">HERMES WP</span>
+            </a>
+            <nav class="nav" aria-label="Main navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <!-- "How I Work" menu item removed -->
+                    <li><a href="#how-i-work">Process</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+                <a href="#contact" class="nav-cta">Contact Me</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <!-- "How I Work" menu item removed -->
+            <a href="#how-i-work">Process</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact" class="nav-cta">Contact Me</a>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-inner">
+                <div class="hero-badge reveal">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    Available for new projects
+                </div>
+                <h1 class="hero-title reveal">
+                    Hello, I'm Herc from<br>Hermeswp, Web Developer
+                </h1>
+                <div class="hero-buttons reveal">
+                    <a href="#contact" class="btn btn-primary">Start a Project</a>
+                    <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+                </div>
+                <div class="hero-stats reveal">
+                    <div class="stat">
+                        <span class="stat-number">450+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat">
+                        <span class="stat-number">99.71%</span>
+                        <span class="stat-label">5-Star Reviews</span>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat">
+                        <span class="stat-number">Fast</span>
+                        <span class="stat-label">Delivery</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-hint" aria-hidden="true">
+                <i data-lucide="chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section section-dark">
+            <div class="container-lg">
+                <div class="section-header reveal">
+                    <span class="section-label">What I Do</span>
+                    <h2 class="section-title">Empowering Small Businesses<br>for Digital Growth</h2>
+                    <p class="section-intro">At Hermeswp, I'm dedicated to helping small businesses thrive in the digital landscape. From establishing a strong online presence to optimizing your digital marketing efforts, I provide tailored solutions that drive growth and connect you with your audience.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <h3 class="service-title">Custom Business Website Development</h3>
+                        <p class="service-text">I craft bespoke websites using HTML/CSS, designed from the ground up to reflect your brand's unique identity and business objectives. These aren't just websites; they're powerful digital assets built for performance, scalability, and an exceptional user experience.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <h3 class="service-title">WordPress Website Solutions</h3>
+                        <p class="service-text">Leverage the flexibility and power of WordPress with custom-built websites. Whether you need a brand-new site or a complete overhaul, I deliver secure, easy-to-manage, and visually stunning websites.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="shopping-cart"></i>
+                        </div>
+                        <h3 class="service-title">WooCommerce E-commerce Stores</h3>
+                        <p class="service-text">Transform your business with a fully functional online store. I specialize in developing and optimizing WooCommerce e-shops, providing seamless shopping experiences for your customers and efficient management tools for you.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="service-title">Website Maintenance &amp; Support</h3>
+                        <p class="service-text">Keep your website running smoothly, securely, and up-to-date with comprehensive maintenance and support services. This includes regular updates, security monitoring, performance optimization, and prompt technical assistance.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="compass"></i>
+                        </div>
+                        <h3 class="service-title">Digital Strategy &amp; Consulting</h3>
+                        <p class="service-text">Navigate the complexities of the digital world with expert guidance. I offer consulting services to help you define your online strategy, identify growth opportunities, and make informed decisions about your web presence.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3 class="service-title">Web Research &amp; Analysis</h3>
+                        <p class="service-text">Gain a competitive edge with in-depth web research. Whether it's market analysis, competitor insights, trend identification, or data gathering, I provide thorough and actionable research to support your business decisions.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="share-2"></i>
+                        </div>
+                        <h3 class="service-title">Social Media Management</h3>
+                        <p class="service-text">Build and maintain a strong brand presence across social platforms. My services include content creation, scheduling, community engagement, and performance tracking to boost your brand's visibility.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <h3 class="service-title">Newsletter &amp; Email Marketing</h3>
+                        <p class="service-text">Cultivate customer loyalty and drive engagement with effective email marketing campaigns. I design, develop, and manage newsletters, promotional emails, and automated sequences that keep your audience informed and engaged.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3 class="service-title">Search Engine Optimization (SEO)</h3>
+                        <p class="service-text">Improve your website's visibility and attract more organic traffic with strategic SEO. From keyword research and on-page optimization to technical SEO audits and link-building strategies, I implement best practices to rank your site higher.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work Section -->
+        <section id="work" class="section section-gradient">
+            <div class="container-lg">
+                <div class="section-header reveal">
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title">Selected Work</h2>
+                </div>
+                <div class="work-grid">
+                    <article class="work-card reveal">
+                        <div class="work-image">
+                            <!-- Corrected Image Source -->
+                            <img src="culinarygenes.jpg" alt="Culinary Genes website — Italian culinary travel and gluten-free cookbooks" loading="lazy" width="800" height="520">
+                        </div>
+                        <div class="work-info">
+                            <h3 class="work-title"><a href="https://culinarygenes.com" target="_blank" rel="noopener">Culinary Genes</a></h3>
+                            <p class="work-desc">Culinary Genes is a beautifully designed website that invites users on a unique culinary journey through Italy. The site effectively showcases immersive travel experiences and promotes cookbooks focused on traditional Italian recipes, thoughtfully adapted for gluten-free diets. Its elegant layout, rich imagery, and compelling storytelling create an engaging platform that resonates with food enthusiasts and travelers alike.</p>
+                        </div>
+                    </article>
+                    <article class="work-card reveal">
+                        <div class="work-image">
+                            <!-- Corrected Image Source -->
+                            <img src="lifestylestrides.jpg" alt="Lifestyle Strides website — preventing lifestyle illnesses through sustainable change" loading="lazy" width="800" height="520">
+                        </div>
+                        <div class="work-info">
+                            <h3 class="work-title"><a href="https://lifestylestrides.com" target="_blank" rel="noopener nofollow">Lifestyle Strides</a></h3>
+                            <p class="work-desc">Lifestyle Strides is a purpose-driven website for a not-for-profit organization dedicated to preventing lifestyle illnesses through small, sustainable changes. The site features clear calls to action for programs, resources, and community impact initiatives. Its clean design and user-friendly navigation effectively communicate the organization's mission and encourage engagement, making it an inspiring hub for health and wellbeing.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How I Work Section -->
+        <section id="how-i-work" class="section section-dark">
+            <div class="container-lg">
+                <div class="section-header reveal">
+                    <span class="section-label">Process</span>
+                    <h2 class="section-title">A Streamlined Approach<br>to Web Development</h2>
+                    <p class="section-intro">My process is designed for clarity, efficiency, and exceptional results. I believe in transparent communication and a structured workflow to bring your vision to life without unnecessary complexities. Here's how we'll transform your ideas into a powerful online presence.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card reveal">
+                        <div class="step-number" aria-hidden="true">01</div>
+                        <div class="step-icon">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3 class="step-title">Discovery &amp; Strategy</h3>
+                        <p class="step-text">We begin by diving deep into your business, understanding your goals, target audience, and competitive landscape. This phase is all about gathering insights, defining project scope, and outlining a strategic roadmap to ensure your website effectively meets your objectives.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number" aria-hidden="true">02</div>
+                        <div class="step-icon">
+                            <i data-lucide="palette"></i>
+                        </div>
+                        <h3 class="step-title">Design &amp; User Experience</h3>
+                        <p class="step-text">Once the strategy is clear, I move into the design phase. This involves creating wireframes and mockups that visualize your website's structure and aesthetic. We'll refine these designs together, ensuring the user experience is intuitive and the visual appeal aligns perfectly with your brand.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number" aria-hidden="true">03</div>
+                        <div class="step-icon">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <h3 class="step-title">Development &amp; Implementation</h3>
+                        <p class="step-text">With approved designs, I meticulously build your website using clean, efficient code. Whether it's a custom HTML/CSS site, a WordPress platform, or a WooCommerce store, I focus on performance, responsiveness across all devices, and robust functionality. Quality and attention to detail are paramount.</p>
+                    </div>
+                    <div class="step-card reveal">
+                        <div class="step-number" aria-hidden="true">04</div>
+                        <div class="step-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <h3 class="step-title">Launch &amp; Ongoing Support</h3>
+                        <p class="step-text">After thorough testing and your final approval, I handle all aspects of deployment, ensuring a smooth and successful launch. But my commitment doesn't end there. I provide ongoing maintenance, updates, and support to keep your website secure, optimized, and performing at its peak.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section section-gradient">
+            <div class="container-lg">
+                <div class="section-header reveal">
+                    <span class="section-label">Feedback</span>
+                    <h2 class="section-title">Testimonials</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <blockquote class="testimonial-card reveal">
+                        <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+                        <p class="testimonial-text">Never ever disappointed in Herc's work. I recommend him all the time too! If you want a VA, look no further!</p>
+                        <footer class="testimonial-author">
+                            <span class="author-name">Katie Janner</span>
+                        </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-card reveal">
+                        <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+                        <p class="testimonial-text">Great person to work with. Very precise and quick response times.</p>
+                        <footer class="testimonial-author">
+                            <span class="author-name">Thanasis</span>
+                        </footer>
+                    </blockquote>
+                    <blockquote class="testimonial-card reveal">
+                        <div class="testimonial-quote" aria-hidden="true">&ldquo;</div>
+                        <p class="testimonial-text">Herc is incredible to work with. He had a lot of attention to detail. Bravo. 👌🏼</p>
+                        <footer class="testimonial-author">
+                            <span class="author-name">Joel</span>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get In Touch Section -->
+        <section id="contact" class="section section-dark">
+            <div class="container-lg">
+                <div class="section-header reveal">
+                    <span class="section-label">Let's Talk</span>
+                    <h2 class="section-title">Ready to Start<br>Your Next Project?</h2>
+                    <p class="section-intro">Whether you have a clear vision or just an idea, I'm here to help you bring your digital aspirations to life. Let's connect and discuss how Hermeswp can elevate your online presence.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-option reveal">
+                        <div class="contact-option-icon">
+                            <i data-lucide="send"></i>
+                        </div>
+                        <h3 class="contact-option-title">Send a Message</h3>
+                        <p class="contact-option-text">Have a question or a detailed project brief? Fill out my contact form, and I'll get back to you promptly.</p>
+                        <a href="contact.html" class="btn btn-primary-dark">Contact Me</a>
+                    </div>
+                    <div class="contact-option reveal">
+                        <div class="contact-option-icon">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <h3 class="contact-option-title">Schedule a Call</h3>
+                        <p class="contact-option-text">Prefer a direct conversation? Book a convenient time on my Calendly page for a free consultation.</p>
+                        <a href="booking.html" class="btn btn-primary-dark">Schedule a Call</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container-lg footer-inner">
+            <p class="footer-text">&copy; 2026 Hermes WP — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        const scrollThreshold = 60;
+
+        function handleHeaderScroll() {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+        handleHeaderScroll();
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('menu-open');
+                mobileToggle.focus();
+            }
+        });
+
+        // Scroll reveal
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Stagger delays for grid children
+        const staggerContainers = document.querySelectorAll('.services-grid, .steps-grid, .testimonials-grid, .contact-grid');
+        staggerContainers.forEach(container => {
+            const children = container.querySelectorAll('.reveal');
+            children.forEach((child, index) => {
+                child.style.transitionDelay = `${index * 0.08}s`;
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
